@@ -15,7 +15,7 @@ namespace ExhibitTreasury.Persistence.Fakes
                 {
                     Id = 1,
                     Name = "Statue of Zeus",
-                    AppraisedValue = 1000000m,
+                    AppraisedValue = 10000m,
                     YearCreated = -500,
                     Material = "Marble",
                     Artist = "Unknown",
