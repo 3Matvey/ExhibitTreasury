@@ -2,7 +2,7 @@
 using ExhibitTreasury.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace ExhibitTreasury.Persistence.Repository
+namespace ExhibitTreasury.Persistence.Repositories
 {
     public class EfRepository<T>(AppDbContext context) 
         : IRepository<T> 

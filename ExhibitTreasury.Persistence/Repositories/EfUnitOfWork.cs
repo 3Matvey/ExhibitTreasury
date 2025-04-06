@@ -1,7 +1,6 @@
 ﻿using ExhibitTreasury.Persistence.Data;
-using ExhibitTreasury.Persistence.Repository;
 
-namespace ExhibitTreasury.Persistence
+namespace ExhibitTreasury.Persistence.Repositories
 {
     public class EfUnitOfWork(AppDbContext context) 
         : IUnitOfWork
