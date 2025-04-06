@@ -19,7 +19,7 @@ namespace ExhibitTreasury.Persistence.Fakes
 
         public Task AddAsync(Hall entity, CancellationToken cancellationToken = default)
         {
-            if (_halls.Any())
+            if (_halls.Count != 0)
                 entity.Id = _halls.Max(h => h.Id) + 1;
             else
                 entity.Id = 1;
@@ -70,6 +70,4 @@ namespace ExhibitTreasury.Persistence.Fakes
             return Task.CompletedTask;
         }
     }
-
-    
 }

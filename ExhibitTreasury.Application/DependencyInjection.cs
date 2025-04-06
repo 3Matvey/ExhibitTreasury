@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using ExhibitTreasury.Application.HallUseCases.Queries; // Здесь должен быть ваш обработчик
 
 namespace ExhibitTreasury.Application
 {
@@ -6,9 +7,10 @@ namespace ExhibitTreasury.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
-            services.AddMediatR(conf =>
+            // Используем тип одного из обработчиков, чтобы точно указать нужную сборку
+            services.AddMediatR(cfg =>
             {
-                conf.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly);
+                cfg.RegisterServicesFromAssemblyContaining<GetAllHallsQueryHandler>();
             });
             return services;
         }

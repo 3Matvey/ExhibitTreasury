@@ -3,13 +3,14 @@
     x:Class="ExhibitTreasury.UI.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:ExhibitTreasury.UI"
+    xmlns:pages="clr-namespace:ExhibitTreasury.UI.Pages"
     Shell.FlyoutBehavior="Flyout"
-    Title="ExhibitTreasury.UI">
+    Title="ExhibitTreasury">
 
+    <!-- Стартовая страница: список залов музея -->
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="Залы"
+        ContentTemplate="{DataTemplate pages:HallsPage}"
+        Route="HallsPage" />
 
 </Shell>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    x:Class="ExhibitTreasury.UI.Pages.HallsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:ExhibitTreasury.UI.ViewModels"
+    xmlns:model="clr-namespace:ExhibitTreasury.Domain.Entities;assembly=ExhibitTreasury.Domain"
+    x:DataType="vm:HallsViewModel"
+    Title="Залы музея">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="10">
+            <Label Text="Список залов музея" 
+                   FontAttributes="Bold" 
+                   FontSize="Medium"
+                   HorizontalOptions="Center" />
+
+            <CollectionView ItemsSource="{Binding Halls}"
+                            SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Hall">
+                        <Border Stroke="Gray" StrokeThickness="1"  Padding="10" Margin="5">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Name}" 
+                                       FontAttributes="Bold" 
+                                       FontSize="Large"/>
+                                <Label Text="{Binding Description}" 
+                                       FontSize="Small"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
