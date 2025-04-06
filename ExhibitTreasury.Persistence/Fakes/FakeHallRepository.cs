@@ -12,7 +12,29 @@ namespace ExhibitTreasury.Persistence.Fakes
             // Инициализация тестовыми данными
             _halls =
             [
-                new Hall { Id = 1, Name = "Ancient Art", Description = "Exhibits from ancient civilizations", Exhibits = [] },
+                new Hall { Id = 1, Name = "Ancient Art", Description = "Exhibits from ancient civilizations", Exhibits =
+                [
+                    new Exhibit
+                    {
+                        Id = 1,
+                        Name = "Statue of Zeus",
+                        AppraisedValue = 1000000m,
+                        YearCreated = -500,
+                        Material = "Marble",
+                        Artist = "Unknown",
+                        HallId = 1
+                    },
+                    new Exhibit
+                    {
+                        Id = 2,
+                        Name = "Mona Lisa",
+                        AppraisedValue = 850000000m,
+                        YearCreated = 1503,
+                        Material = "Oil on poplar",
+                        Artist = "Leonardo da Vinci",
+                        HallId = 2
+                    }
+                ]},
                 new Hall { Id = 2, Name = "Modern Art", Description = "Exhibits from modern era", Exhibits = [] }
             ];
         }
