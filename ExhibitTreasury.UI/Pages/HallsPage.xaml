@@ -36,24 +36,28 @@
             <!-- CollectionView для экспонатов выбранного зала -->
             <Label Text="Экспонаты:" FontAttributes="Bold" />
             <CollectionView ItemsSource="{Binding Exhibits}"
-                            SelectionMode="Single">
+                SelectionMode="Single">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Exhibit">
-                        <!-- Граница изменяет свой цвет через конвертер -->
                         <Border Stroke="{Binding AppraisedValue, Converter={StaticResource AppraisedValueToColorConverter}}"
-                                StrokeThickness="1" Padding="10" Margin="5">
+                    StrokeThickness="1" Padding="10" Margin="5">
                             <HorizontalStackLayout Spacing="10">
-                                <!-- Изображение экспоната (placeholder, замените на привязку, если есть свойство ImagePath) -->
                                 <Image Source="placeholder.png"
-                                       HeightRequest="100" WidthRequest="100"
-                                       Aspect="AspectFill"/>
+                           HeightRequest="100" WidthRequest="100"
+                           Aspect="AspectFill"/>
                                 <VerticalStackLayout Spacing="5">
                                     <Label Text="{Binding Name}"
-                                           FontAttributes="Bold"
-                                           FontSize="Large"/>
+                               FontAttributes="Bold" 
+                               FontSize="Large"/>
                                     <Label Text="{Binding AppraisedValue, StringFormat='Оценка: {0:C}'}"
-                                           FontSize="Small"/>
+                               FontSize="Small"/>
                                 </VerticalStackLayout>
+                                <!-- Привяжем тап для перехода на страницу деталей -->
+                                <HorizontalStackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HallsViewModel}}, Path=ShowExhibitDetailsCommand}"
+                            CommandParameter="{Binding}" />
+                                </HorizontalStackLayout.GestureRecognizers>
                             </HorizontalStackLayout>
                         </Border>
                     </DataTemplate>

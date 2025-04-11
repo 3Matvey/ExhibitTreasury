@@ -1,10 +1,8 @@
 ﻿using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using ExhibitTreasury.Domain.Entities;
-using MediatR;
 using ExhibitTreasury.Application.ExhibitUseCases.Queries;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using ExhibitTreasury.UI.Pages;
 
 namespace ExhibitTreasury.UI.ViewModels
 {
@@ -76,6 +74,21 @@ namespace ExhibitTreasury.UI.ViewModels
             {
                 LoadExhibitsCommand.ExecuteAsync(null);
             }
+        }
+
+        [RelayCommand]
+        private async Task ShowExhibitDetails(Exhibit selectedExhibit)
+        {
+            if (selectedExhibit == null)
+                return;
+
+            // Передаем объект через параметры маршрута
+            var parameters = new Dictionary<string, object>
+        {
+            { "Exhibit", selectedExhibit }
+        };
+            await Shell.Current.GoToAsync(nameof(ExhibitDetailsPage), parameters);
+
         }
     }
 }

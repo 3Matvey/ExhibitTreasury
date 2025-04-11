@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    x:Class="ExhibitTreasury.UI.Pages.ExhibitDetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:ExhibitTreasury.UI.ViewModels"
+    xmlns:model="clr-namespace:ExhibitTreasury.Domain.Entities"
+    x:DataType="vm:ExhibitDetailsViewModel"
+    Title="Детали экспоната">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="10" Spacing="10">
+            <!-- Название экспоната -->
+            <Label Text="{Binding Exhibit.Name}" 
+                   FontAttributes="Bold" 
+                   FontSize="Large"/>
+            <!-- Изображение экспоната (placeholder, замените или привяжите к свойству, если имеется) -->
+            <Image Source="placeholder.png" 
+                   HeightRequest="200" 
+                   Aspect="AspectFill"/>
+            <!-- Оценочная стоимость -->
+            <Label Text="{Binding Exhibit.AppraisedValue, StringFormat='Оценочная стоимость: {0:C}'}" 
+                   FontSize="Medium"/>
+            <!-- Год создания -->
+            <Label Text="{Binding Exhibit.YearCreated, StringFormat='Год создания: {0}'}" 
+                   FontSize="Medium"/>
+            <!-- Материал -->
+            <Label Text="{Binding Exhibit.Material, StringFormat='Материал: {0}'}" 
+                   FontSize="Medium"/>
+            <!-- Автор/Художник -->
+            <Label Text="{Binding Exhibit.Artist, StringFormat='Автор: {0}'}" 
+                   FontSize="Medium"/>
+            <!-- Здесь можно добавить кнопки: редактирование, удаление и т.д. -->
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
