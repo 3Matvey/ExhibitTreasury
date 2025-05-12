@@ -8,17 +8,12 @@
     Title="Залы">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem
-      Text="Новый зал"
-      Order="Primary"
-      Priority="0"
-      Command="{Binding NavigateToCreateHallCommand}" />
-        <ToolbarItem
-      Text="Новый экспонат"
-      Order="Primary"
-      Priority="1"
-      Command="{Binding NavigateToCreateExhibitCommand}" />
+        <ToolbarItem Text="Новый зал"
+               Command="{Binding NavigateToCreateHallCommand}" />
+        <ToolbarItem Text="Новый экспонат"
+               Command="{Binding NavigateToCreateExhibitCommand}" />
     </ContentPage.ToolbarItems>
+
 
     <CollectionView
     ItemsSource="{Binding Halls}"

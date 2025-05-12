@@ -16,10 +16,7 @@ namespace ExhibitTreasury.UI.Pages
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (_viewModel.LoadHallsCommand.CanExecute(null))
-            {
-                _viewModel.LoadHallsCommand.Execute(null);
-            }
+            _viewModel.LoadHallsCommand.Execute(null);
         }
     }
 }
