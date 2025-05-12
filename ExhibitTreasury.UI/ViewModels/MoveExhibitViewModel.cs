@@ -40,7 +40,11 @@ namespace ExhibitTreasury.UI.ViewModels
             Halls.Clear();
             foreach (var h in all) Halls.Add(h);
         }
-
+        partial void OnExhibitChanged(Exhibit value)
+        {
+            // Запускаем загрузку залов сразу после того, как VM получил Exhibit
+            LoadHallsCommand.Execute(null);
+        }
         private bool CanMove() => SelectedHall is not null && SelectedHall.Id != Exhibit.HallId;
 
         [RelayCommand(CanExecute = nameof(CanMove))]
