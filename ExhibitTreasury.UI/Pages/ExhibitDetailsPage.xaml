@@ -1,38 +1,37 @@
-﻿<!-- ExhibitDetailsPage.xaml -->
-<ContentPage
+﻿<ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pages="clr-namespace:ExhibitTreasury.UI.Pages"
+    xmlns:conv="clr-namespace:ExhibitTreasury.UI.ValueConverters"
     x:Class="ExhibitTreasury.UI.Pages.ExhibitDetailsPage"
     Title="{Binding Exhibit.Name}">
 
+    <!-- Если не регистрировали в App.xaml, локально можно так:
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <conv:ExhibitImageConverter x:Key="ExhibitImageConverter" />
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  -->
+
     <ContentPage.ToolbarItems>
-        <ToolbarItem
-      Text="Редактировать"
-      Order="Primary"
-      Priority="0"
-      Command="{Binding NavigateToEditExhibitCommand}" />
-        <ToolbarItem
-      Text="Переместить"
-      Order="Primary"
-      Priority="1"
-      Command="{Binding NavigateToMoveExhibitCommand}" />
-        <ToolbarItem
-      Text="Выбрать фото"
-      Order="Primary"
-      Priority="2"
-      Command="{Binding SelectImageCommand}" />
+        <ToolbarItem Text="Редактировать" Command="{Binding NavigateToEditExhibitCommand}" />
+        <ToolbarItem Text="Переместить"   Command="{Binding NavigateToMoveExhibitCommand}" />
+        <ToolbarItem Text="Фото"         Command="{Binding SelectImageCommand}" />
     </ContentPage.ToolbarItems>
 
     <ScrollView>
-        <StackLayout Padding="20">
+        <StackLayout Padding="20" Spacing="15">
+            <!-- Здесь используем конвертер по Id -->
             <Image
         Source="{Binding Exhibit.Id, Converter={StaticResource ExhibitImageConverter}}"
         Aspect="AspectFill"
         HeightRequest="200" />
-            <Label Text="{Binding Exhibit.Name}" FontSize="Title" />
-            <Label Text="{Binding Exhibit.Description}" />
+
+            <Label Text="{Binding Exhibit.Name}"        FontSize="Title" />
+            <Label Text="{Binding Exhibit.AppraisedValue, StringFormat='Оценка: {0:C}'}" />
+            <Label Text="{Binding Exhibit.YearCreated,    StringFormat='Год: {0}'}" />
+            <Label Text="{Binding Exhibit.Material,       StringFormat='Материал: {0}'}" />
+            <Label Text="{Binding Exhibit.Artist,         StringFormat='Автор: {0}'}" />
         </StackLayout>
     </ScrollView>
-
 </ContentPage>
