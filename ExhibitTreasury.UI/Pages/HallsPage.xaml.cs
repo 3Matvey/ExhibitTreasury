@@ -1,3 +1,5 @@
+// Pages/HallsPage.xaml.cs
+using ExhibitTreasury.Domain.Entities;
 using ExhibitTreasury.UI.ViewModels;
 
 namespace ExhibitTreasury.UI.Pages
@@ -6,17 +8,28 @@ namespace ExhibitTreasury.UI.Pages
     {
         private readonly HallsViewModel _viewModel;
 
-        public HallsPage(HallsViewModel viewModel)
+        public HallsPage(HallsViewModel vm)
         {
             InitializeComponent();
-            _viewModel = viewModel;
-            BindingContext = _viewModel;
+            BindingContext = _viewModel = vm;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.LoadHallsCommand.Execute(null);
+            await _viewModel.LoadHallsCommand.ExecuteAsync(null);
+        }
+
+        private async void OnHallSelected(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.CurrentSelection.FirstOrDefault() is Hall hall)
+            {
+                // Navigate to ExhibitsPage, передаём HallId
+                await Shell.Current.GoToAsync(
+                  nameof(ExhibitsPage),
+                  new Dictionary<string, object> { ["HallId"] = hall.Id });
+                ((CollectionView)sender).SelectedItem = null;
+            }
         }
     }
 }

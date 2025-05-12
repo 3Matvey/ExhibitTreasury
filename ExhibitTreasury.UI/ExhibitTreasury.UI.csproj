@@ -98,6 +98,9 @@
 	  <MauiXaml Update="Pages\ExhibitDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\ExhibitsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\HallsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

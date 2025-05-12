@@ -5,22 +5,30 @@
     x:Class="ExhibitTreasury.UI.Pages.CreateExhibitPage"
     Title="Новый экспонат">
 
-    <StackLayout Padding="20" Spacing="15">
-        <Label Text="Название экспоната" />
-        <Entry Text="{Binding Name}" Placeholder="Введите название" />
+    <StackLayout Padding="20" Spacing="10">
 
-        <Label Text="Описание" />
-        <Editor Text="{Binding Description}" HeightRequest="100" />
+  <Label Text="Название" />
+  <Entry Text="{Binding Name}" />
 
-        <Button
-      Text="Сохранить"
-      Command="{Binding SaveCommand}"
-      IsEnabled="{Binding IsValid}" />
+  <Label Text="Оценочная стоимость" />
+  <Entry Text="{Binding AppraisedValue, Mode=TwoWay}" Keyboard="Numeric" />
 
-        <Button
-      Text="Отмена"
-      Command="{Binding CancelCommand}"
-      BackgroundColor="Transparent"
-      TextColor="Gray" />
-    </StackLayout>
+  <Label Text="Год создания" />
+  <Entry Text="{Binding YearCreated, Mode=TwoWay}" Keyboard="Numeric" />
+
+  <Label Text="Материал" />
+  <Entry Text="{Binding Material}" />
+
+  <Label Text="Автор" />
+  <Entry Text="{Binding Artist}" />
+
+  <!-- Сохранить и Отмена -->
+  <Button Text="Сохранить"
+          Command="{Binding SaveCommand}" />
+  <Button Text="Отмена"
+          Command="{Binding CancelCommand}"
+          BackgroundColor="Transparent"
+          TextColor="Gray" />
+</StackLayout>
+
 </ContentPage>

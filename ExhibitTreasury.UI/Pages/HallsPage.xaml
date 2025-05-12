@@ -1,35 +1,30 @@
-<!-- HallsPage.xaml -->
+<!-- Pages/HallsPage.xaml -->
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pages="clr-namespace:ExhibitTreasury.UI.Pages"
     xmlns:domain="clr-namespace:ExhibitTreasury.Domain.Entities;assembly=ExhibitTreasury.Domain"
     x:Class="ExhibitTreasury.UI.Pages.HallsPage"
     Title="Залы">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Новый зал"
-               Command="{Binding NavigateToCreateHallCommand}" />
-        <ToolbarItem Text="Новый экспонат"
-               Command="{Binding NavigateToCreateExhibitCommand}" />
+                 Command="{Binding NavigateToCreateHallCommand}" />
     </ContentPage.ToolbarItems>
 
-
+    <Label Text="Список залов" FontSize="Title" Margin="10"/>
     <CollectionView
-    ItemsSource="{Binding Halls}"
-    SelectedItem="{Binding SelectedHall, Mode=TwoWay}"
-    SelectionMode="Single">
+      ItemsSource="{Binding Halls}"
+      SelectionMode="Single"
+      SelectionChanged="OnHallSelected">
         <CollectionView.ItemTemplate>
-            <DataTemplate x:DataType="domain:Hall"
-                  xmlns:domain="clr-namespace:ExhibitTreasury.Domain.Entities;assembly=ExhibitTreasury.Domain">
+            <DataTemplate x:DataType="domain:Hall">
                 <Frame Padding="10" Margin="5" CornerRadius="8" HasShadow="True">
-                    <Label Text="{Binding Name}" 
-               FontAttributes="Bold" 
-               FontSize="16" />
+                    <StackLayout>
+                        <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="16" />
+                        <Label Text="{Binding Description}" FontSize="Small" TextColor="Gray"/>
+                    </StackLayout>
                 </Frame>
             </DataTemplate>
         </CollectionView.ItemTemplate>
     </CollectionView>
-
-
 </ContentPage>

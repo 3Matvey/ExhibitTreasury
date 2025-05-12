@@ -49,6 +49,9 @@ namespace ExhibitTreasury.UI.ViewModels
         [RelayCommand(CanExecute = nameof(CanSave))]
         private async Task SaveAsync()
         {
+  //          var hall = await _mediator.Send(new GetHallByIdQuery(HallId));
+//            HallTitle = hall.Name;
+
             await _mediator.Send(new AddExhibitCommand(
                 Name,
                 AppraisedValue,

@@ -14,6 +14,7 @@ namespace ExhibitTreasury.UI
             services.AddTransient<CreateExhibitPage>();
             services.AddTransient<EditExhibitPage>();
             services.AddTransient<MoveExhibitPage>();
+            services.AddTransient<ExhibitsPage>();
 
             return services;
         }
@@ -26,6 +27,8 @@ namespace ExhibitTreasury.UI
             services.AddTransient<CreateExhibitViewModel>();
             services.AddTransient<EditExhibitViewModel>();
             services.AddTransient<MoveExhibitViewModel>();
+            services.AddTransient<ExhibitsViewModel>();
+
             return services;
         }
     }

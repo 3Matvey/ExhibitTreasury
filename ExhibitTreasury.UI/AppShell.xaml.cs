@@ -12,6 +12,7 @@ namespace ExhibitTreasury.UI
             Routing.RegisterRoute(nameof(CreateExhibitPage), typeof(CreateExhibitPage));
             Routing.RegisterRoute(nameof(EditExhibitPage), typeof(EditExhibitPage));
             Routing.RegisterRoute(nameof(MoveExhibitPage), typeof(MoveExhibitPage));
+            Routing.RegisterRoute(nameof(ExhibitsPage), typeof(ExhibitsPage));
 
         }
     }
