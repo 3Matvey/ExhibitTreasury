@@ -10,6 +10,11 @@ namespace ExhibitTreasury.UI
         {
             services.AddTransient<HallsPage>();
             services.AddTransient<ExhibitDetailsPage>();
+            services.AddTransient<CreateHallPage>();
+            services.AddTransient<CreateExhibitPage>();
+            services.AddTransient<EditExhibitPage>();
+            services.AddTransient<MoveExhibitPage>();
+
             return services;
         }
 
@@ -17,6 +22,10 @@ namespace ExhibitTreasury.UI
         {
             services.AddTransient<HallsViewModel>();
             services.AddTransient<ExhibitDetailsViewModel>();
+            services.AddTransient<CreateHallViewModel>();
+            services.AddTransient<CreateExhibitViewModel>();
+            services.AddTransient<EditExhibitViewModel>();
+            services.AddTransient<MoveExhibitViewModel>();
             return services;
         }
     }

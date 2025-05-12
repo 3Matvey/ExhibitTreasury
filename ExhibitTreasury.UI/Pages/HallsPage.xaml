@@ -1,68 +1,40 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
-    x:Class="ExhibitTreasury.UI.Pages.HallsPage"
+<!-- HallsPage.xaml -->
+<ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:vm="clr-namespace:ExhibitTreasury.UI.ViewModels"
-    xmlns:model="clr-namespace:ExhibitTreasury.Domain.Entities;assembly=ExhibitTreasury.Domain"
-    xmlns:conv="clr-namespace:ExhibitTreasury.UI.ValueConverters"
-    x:DataType="vm:HallsViewModel"
-    Title="Залы музея">
-    
-    <ContentPage.Resources>
-        <ResourceDictionary>
-            <conv:AppraisedValueToColorConverter x:Key="AppraisedValueToColorConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
+    xmlns:pages="clr-namespace:ExhibitTreasury.UI.Pages"
+    xmlns:domain="clr-namespace:ExhibitTreasury.Domain.Entities;assembly=ExhibitTreasury.Domain"
+    x:Class="ExhibitTreasury.UI.Pages.HallsPage"
+    Title="Залы">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="10" Spacing="10">
-            <Label Text="Список залов музея"
-                   FontAttributes="Bold"
-                   FontSize="Medium"
-                   HorizontalOptions="Center" />
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+      Text="Новый зал"
+      Order="Primary"
+      Priority="0"
+      Command="{Binding NavigateToCreateHallCommand}" />
+        <ToolbarItem
+      Text="Новый экспонат"
+      Order="Primary"
+      Priority="1"
+      Command="{Binding NavigateToCreateExhibitCommand}" />
+    </ContentPage.ToolbarItems>
 
-            <!-- Picker для выбора зала -->
-            <Picker Title="Выберите зал"
-                    ItemsSource="{Binding Halls}"
-                    ItemDisplayBinding="{Binding Name}"
-                    SelectedItem="{Binding SelectedHall}" />
+    <CollectionView
+    ItemsSource="{Binding Halls}"
+    SelectedItem="{Binding SelectedHall, Mode=TwoWay}"
+    SelectionMode="Single">
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="domain:Hall"
+                  xmlns:domain="clr-namespace:ExhibitTreasury.Domain.Entities;assembly=ExhibitTreasury.Domain">
+                <Frame Padding="10" Margin="5" CornerRadius="8" HasShadow="True">
+                    <Label Text="{Binding Name}" 
+               FontAttributes="Bold" 
+               FontSize="16" />
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 
-            <!-- Информация о выбранном зале -->
-            <Label Text="Описание:" FontAttributes="Bold"/>
-            <Label Text="{Binding SelectedHall.Description}" />
 
-            <!-- CollectionView для экспонатов выбранного зала -->
-            <Label Text="Экспонаты:" FontAttributes="Bold" />
-            <CollectionView ItemsSource="{Binding Exhibits}"
-                SelectionMode="Single">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Exhibit">
-                        <Border Stroke="{Binding AppraisedValue, Converter={StaticResource AppraisedValueToColorConverter}}"
-                    StrokeThickness="1" Padding="10" Margin="5">
-                            <HorizontalStackLayout Spacing="10">
-                                <Image Source="placeholder.png"
-                           HeightRequest="100" WidthRequest="100"
-                           Aspect="AspectFill"/>
-                                <VerticalStackLayout Spacing="5">
-                                    <Label Text="{Binding Name}"
-                               FontAttributes="Bold" 
-                               FontSize="Large"/>
-                                    <Label Text="{Binding AppraisedValue, StringFormat='Оценка: {0:C}'}"
-                               FontSize="Small"/>
-                                </VerticalStackLayout>
-                                <!-- Привяжем тап для перехода на страницу деталей -->
-                                <HorizontalStackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer
-                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HallsViewModel}}, Path=ShowExhibitDetailsCommand}"
-                            CommandParameter="{Binding}" />
-                                </HorizontalStackLayout.GestureRecognizers>
-                            </HorizontalStackLayout>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </VerticalStackLayout>
-    </ScrollView>
 </ContentPage>

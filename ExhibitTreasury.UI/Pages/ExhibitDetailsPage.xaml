@@ -1,36 +1,38 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage 
-    x:Class="ExhibitTreasury.UI.Pages.ExhibitDetailsPage"
+﻿<!-- ExhibitDetailsPage.xaml -->
+<ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:vm="clr-namespace:ExhibitTreasury.UI.ViewModels"
-    xmlns:model="clr-namespace:ExhibitTreasury.Domain.Entities"
-    x:DataType="vm:ExhibitDetailsViewModel"
-    Title="Детали экспоната">
+    xmlns:pages="clr-namespace:ExhibitTreasury.UI.Pages"
+    x:Class="ExhibitTreasury.UI.Pages.ExhibitDetailsPage"
+    Title="{Binding Exhibit.Name}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+      Text="Редактировать"
+      Order="Primary"
+      Priority="0"
+      Command="{Binding NavigateToEditExhibitCommand}" />
+        <ToolbarItem
+      Text="Переместить"
+      Order="Primary"
+      Priority="1"
+      Command="{Binding NavigateToMoveExhibitCommand}" />
+        <ToolbarItem
+      Text="Выбрать фото"
+      Order="Primary"
+      Priority="2"
+      Command="{Binding SelectImageCommand}" />
+    </ContentPage.ToolbarItems>
 
     <ScrollView>
-        <VerticalStackLayout Padding="10" Spacing="10">
-            <!-- Название экспоната -->
-            <Label Text="{Binding Exhibit.Name}" 
-                   FontAttributes="Bold" 
-                   FontSize="Large"/>
-            <!-- Изображение экспоната (placeholder, замените или привяжите к свойству, если имеется) -->
-            <Image Source="placeholder.png" 
-                   HeightRequest="200" 
-                   Aspect="AspectFill"/>
-            <!-- Оценочная стоимость -->
-            <Label Text="{Binding Exhibit.AppraisedValue, StringFormat='Оценочная стоимость: {0:C}'}" 
-                   FontSize="Medium"/>
-            <!-- Год создания -->
-            <Label Text="{Binding Exhibit.YearCreated, StringFormat='Год создания: {0}'}" 
-                   FontSize="Medium"/>
-            <!-- Материал -->
-            <Label Text="{Binding Exhibit.Material, StringFormat='Материал: {0}'}" 
-                   FontSize="Medium"/>
-            <!-- Автор/Художник -->
-            <Label Text="{Binding Exhibit.Artist, StringFormat='Автор: {0}'}" 
-                   FontSize="Medium"/>
-            <!-- Здесь можно добавить кнопки: редактирование, удаление и т.д. -->
-        </VerticalStackLayout>
+        <StackLayout Padding="20">
+            <Image
+        Source="{Binding Exhibit.Id, Converter={StaticResource ExhibitImageConverter}}"
+        Aspect="AspectFill"
+        HeightRequest="200" />
+            <Label Text="{Binding Exhibit.Name}" FontSize="Title" />
+            <Label Text="{Binding Exhibit.Description}" />
+        </StackLayout>
     </ScrollView>
+
 </ContentPage>
