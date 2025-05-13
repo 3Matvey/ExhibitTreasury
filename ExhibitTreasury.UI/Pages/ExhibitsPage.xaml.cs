@@ -1,5 +1,4 @@
-﻿using ExhibitTreasury.Domain.Entities;
-using ExhibitTreasury.UI.ViewModels;
+﻿using ExhibitTreasury.UI.ViewModels;
 
 namespace ExhibitTreasury.UI.Pages
 {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.IO;
-using Microsoft.Maui.Controls;
+﻿using System.Globalization;
 
 namespace ExhibitTreasury.UI.ValueConverters
 {

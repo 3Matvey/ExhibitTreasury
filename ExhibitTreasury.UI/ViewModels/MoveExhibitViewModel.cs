@@ -1,13 +1,7 @@
 ﻿// ViewModels/MoveExhibitViewModel.cs
-using System;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using ExhibitTreasury.Application.ExhibitUseCases.Queries;
-using ExhibitTreasury.Domain.Entities;
-using MediatR;
-using Microsoft.Maui.Controls;
 
 namespace ExhibitTreasury.UI.ViewModels
 {

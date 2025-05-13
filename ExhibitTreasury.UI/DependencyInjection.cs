@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using ExhibitTreasury.UI.Pages;
+﻿using ExhibitTreasury.UI.Pages;
 using ExhibitTreasury.UI.ViewModels;
 
 namespace ExhibitTreasury.UI

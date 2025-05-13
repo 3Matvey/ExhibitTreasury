@@ -1,12 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using ExhibitTreasury.Domain.Entities;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Storage;
-using System;
-using System.Globalization;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace ExhibitTreasury.UI.ViewModels
 {

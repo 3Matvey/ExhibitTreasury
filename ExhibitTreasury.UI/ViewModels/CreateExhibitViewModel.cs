@@ -1,15 +1,7 @@
 ﻿// ViewModels/CreateExhibitViewModel.cs
-using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ExhibitTreasury.Application.ExhibitUseCases.Commands;
-using MediatR;
-using Microsoft.Maui.Controls;
-using CommunityToolkit.Mvvm.Messaging; // если понадобится
-using CommunityToolkit.Mvvm.ComponentModel;
-using Microsoft.Maui.Controls;
-using ExhibitTreasury.Domain.Entities;
-using System.Xml.Linq;
 
 namespace ExhibitTreasury.UI.ViewModels
 {
